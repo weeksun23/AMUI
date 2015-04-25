@@ -2,3 +2,4 @@
 ##ui组件
 + pick
 + dialog
++ slidemenu
