@@ -1,2 +1,4 @@
-# AMUI
-基于avalon.mobile的UI库
+#基于avalon.mobile的ui库
+##ui组件
++ pick
++ dialog
