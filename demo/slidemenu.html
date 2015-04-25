@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset='utf-8'>
+	<meta name="format-detection" content="telephone=no" >
+	<meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+	<title>avalon slidemenu</title>
+	<link rel="stylesheet" type="text/css" href="demo.css">
+	<style type="text/css">
+	</style>
+</head>
+<body ms-controller='demo'>
+	<h1 class='title'>SlideMenu</h1>
+	<div class='tac oper'>
+		<a href='javascript:void(0)' class='btn btn-lightblue btn-block' ms-on-tap='$simpleSlide'>simpleSlide</a>
+	</div>
+	<div ms-widget='slidemenu,$slidemenu1,$slidemenu1Opts'>
+		<h1>slidemenu testtest</h1>
+		<p>r23r23r23t2twertertret</p>
+		<p>r23r23r23t2twertertret</p>
+		<p>r23r23r23t2twertertret</p>
+		<p>r23r23r23t2twertertret</p>
+	</div>
+	<script src='../src/avalon.mobile.js'></script>
+	<script>
+		require(["slidemenu/avalon.slidemenu"],function(){
+			avalon.define({
+				$id : 'demo',
+				$simpleSlide : function(){
+					avalon.vmodels.$slidemenu1.show();
+				}
+			});
+			avalon.scan();
+		});
+	</script>
+</body>
+</html>

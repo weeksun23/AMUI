@@ -6,6 +6,7 @@ body{
   font-size: 16px;font-family: Helvetica;
   -webkit-overflow-scrolling: touch;
   -ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;
+  overflow: auto;
 }
 body,html{width: 100%;height: 100%;overflow: hidden;}
 input,button{-webkit-appearance: none;}
@@ -119,3 +120,5 @@ em,i{font-style: normal;font-weight: normal;}
 }
 /**/
 h1.title{text-align: center;font-size: 2em;padding: 0.5em 0}
+.oper{padding: 0 0.5em}
+.oper a{margin-bottom: 0.5em;}

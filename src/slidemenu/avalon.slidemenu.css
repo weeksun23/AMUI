@@ -1,0 +1,72 @@
+.slidemask{
+	background-color: #000;z-index: 10;opacity: 0.6;display: none;
+	position: fixed;top: 0;left: 0;right: 0;bottom: 0;
+}
+.slidemask-animate{
+	animation: slidemask 0.2s;
+	-webkit-animation: slidemask 0.2s;
+	animation-timing-function: linear;
+	-webkit-animation-timing-function: linear;
+}
+.slidemask-hide-animate{
+	animation: hideslidemask 0.2s;
+	-webkit-animation: hideslidemask 0.2s;
+	animation-timing-function: linear;
+	-webkit-animation-timing-function: linear;
+}
+@keyframes slidemask{
+	0%   {opacity: 0;}
+	100% {opacity: 0.6;}
+}
+@-webkit-keyframes slidemask{
+	0%   {opacity: 0;}
+	100% {opacity: 0.6;}
+}
+@keyframes hideslidemask{
+	0%   {opacity: 0.6;}
+	100% {opacity: 0;}
+}
+@-webkit-keyframes hideslidemask{
+	0%   {opacity: 0.6;}
+	100% {opacity: 0;}
+}
+.slidemenu{
+	position: fixed;z-index: 11;display: none;background-color: transparent;
+	-webkit-transform-style: preserve-3d;
+	-webkit-backface-visibility: hidden;
+	bottom: 0px;
+}
+.slidemenu>div{
+	position: absolute;background-color: #f2f2f2;top: 0;left: 0;width: 100%;
+}
+.slidemenu-bottom{
+	left: 0;right: 0;
+}
+.slidemenu-bottom-animate{
+	animation: slidemenu 0.2s;
+	-webkit-animation: slidemenu 0.2s;
+	animation-timing-function: linear;
+	-webkit-animation-timing-function: linear;
+}
+.slidemenu-bottom-hide-animate{
+	animation: hideslidemenu 0.2s;
+	-webkit-animation: hideslidemenu 0.2s;
+	animation-timing-function: linear;
+	-webkit-animation-timing-function: linear;
+}
+@keyframes slidemenu{
+	0%   {top: 100%;}
+	100% {top: 0;}
+}
+@-webkit-keyframes slidemenu{
+	0%   {top: 100%;}
+	100% {top: 0;}
+}
+@keyframes hideslidemenu{
+	0%   {top: 0;}
+	100% {top: 100%;}
+}
+@-webkit-keyframes hideslidemenu{
+	0%   {top: 0;}
+	100% {top: 100%;}
+}
