@@ -4,4 +4,4 @@
 + dialog
 + slidemenu
 
-#感谢司徒哥
+#love avalon，thanks RubyLouvre.
