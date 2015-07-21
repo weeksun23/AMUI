@@ -13,7 +13,7 @@ define(["avalon",'lib/iscroll/iscroll-lite',"css!./avalon.pick.css"],function(av
 		"</ul>"+
 		"<div class='pick-top pick-mask' ms-css-height='maskHeightPercent'></div>"+
 		"<div class='pick-bottom pick-mask' ms-css-height='maskHeightPercent'></div>"+
-		"<div ms-if='unit' class='pick-center' ms-css-line-height='tickHeight' ms-css-top='maskHeightPercent' ms-css-bottom='maskHeightPercent'>"+
+		"<div ms-if='unit' class='pick-center' ms-css-line-height='tickHeight'>"+
 			"<i>{{unit}}</i><span class='pick-unit-mid'>1</span><i class='pick-unit'>{{unit}}</i>"+
 		"</div>";
 	function getFixHeight(h,scaleNum){
@@ -76,6 +76,12 @@ define(["avalon",'lib/iscroll/iscroll-lite',"css!./avalon.pick.css"],function(av
 	                }
 	                this.scrollTo(0,-target,time);
 	            });
+	            if(vmodel.unit){
+	            	var center = element.querySelector(".pick-center");
+	            	setTimeout(function(){
+	            		center.style.top = vmodel.maskHeightPercent;
+	            	});
+				}
 			};
 			vm.$remove = function(){
 				element.innerHTML = element.textContent = "";

@@ -39,6 +39,8 @@ define(["avalon","css!./avalon.slidemenu.css"],function(avalon){
 				avalon.bind(element.querySelector("div.slidemenu-inner"),'animationend',function(){
 					if(avalon(this).hasClass("slidemenu-"+vmodel.position+"-hide-animate")){
 						this.parentNode.style.display = 'none';
+					}else{
+						vmodel.onShowEnd.call(element,vmodel);
 					}
 				});
 				avalon.scan(element,[vmodel].concat(vmodels));
@@ -50,6 +52,7 @@ define(["avalon","css!./avalon.slidemenu.css"],function(avalon){
 				slideMask.style.display = 'block';
 				slideMask.className = 'slidemask slidemask-animate';
 				slideMask.curMenu = element;
+				vmodel.onShow.call(element,vmodel);
 			};
 			vm.hide = hideMask;
 		});
@@ -61,6 +64,8 @@ define(["avalon","css!./avalon.slidemenu.css"],function(avalon){
 	};
 	widget.version = 1.0;
 	widget.defaults = {
-		position : 'right'
+		position : 'right',
+		onShow : avalon.noop,
+		onShowEnd : avalon.noop
 	};
 });

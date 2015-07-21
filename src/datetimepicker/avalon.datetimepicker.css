@@ -1,0 +1,13 @@
+.dtp-pick{
+	display: box;display:-webkit-box;
+	height: 150px;background-color: #fff;
+}
+.dtp-split{
+	height: 1px;background-color: #ccc;
+}
+.dtp-pick>div,.dtp-btn>div{
+	box-flex:1;-webkit-box-flex:1;
+}
+.dtp-btn{
+	display: box;display:-webkit-box;
+}
