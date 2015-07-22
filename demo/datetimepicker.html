@@ -7,19 +7,19 @@
 	<title>avalon datetimepicker</title>
 	<link rel="stylesheet" type="text/css" href="demo.css">
 	<style type="text/css">
-		input{padding: 2em}
+		.span{padding: 2em;display: block;border:1px solid #ccc;text-align: center;margin: 10px;}
 	</style>
 </head>
 <body ms-controller='demo'>
-	<input type='text' ms-widget="datetimepicker,$,$date1" readonly placeholder="请点击选择时间"/>
-	<input type='text' ms-widget="datetimepicker,$,$date2" readonly placeholder="请点击选择时间"/>
+	<span class='span' ms-widget="datetimepicker,$,$date1"></span>
+	<span class='span' ms-widget="datetimepicker,$,$date2"></span>
 	<script src='../src/avalon.mobile.js'></script>
 	<script>
-		require(["datetimepicker/avalon.datetimepicker.js?222"],function(){
+		require(["datetimepicker/avalon.datetimepicker"],function(){
 			avalon.define({
 				$id : 'demo',
 				$date1 : {
-
+					
 				},
 				$date2 : {
 					showClearBtn : false,
