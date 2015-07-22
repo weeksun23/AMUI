@@ -90,7 +90,8 @@ define(["avalon","text!./avalon.datetimepicker.html","css!./avalon.datetimepicke
 			});
 		});
 		//datetimepickerId
-		avalon.bind(element,"tap",function(){
+		avalon.bind(element,"tap",function(e){
+			e.preventDefault();
 			if(!isInit){
 				var div = document.createElement("div");
 				div.setAttribute("ms-widget","slidemenu,$pickslidemenu,$slidemenuOpts");
