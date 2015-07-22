@@ -1,21 +1,7 @@
 /*
 	移动端选择插件
 */
-define(["avalon",'lib/iscroll/iscroll-lite',"css!./avalon.pick.css"],function(avalon,IScroll){
-	//根据data生成html
-	var tpl = 
-		"<ul class='pick-list'>"+
-			"{{extra | html}}" +
-			"<li class='pick-list-item' ms-repeat='data' ms-css-line-height='tickHeight'>" +
-				"<span class='pick-list-text'>{{el[textField]}}</span>"+
-			"</li>" +
-			"{{extra | html}}" +
-		"</ul>"+
-		"<div class='pick-top pick-mask' ms-css-height='maskHeightPercent'></div>"+
-		"<div class='pick-bottom pick-mask' ms-css-height='maskHeightPercent'></div>"+
-		"<div ms-if='unit' class='pick-center' ms-css-line-height='tickHeight'>"+
-			"<i>{{unit}}</i><span class='pick-unit-mid'>1</span><i class='pick-unit'>{{unit}}</i>"+
-		"</div>";
+define(["avalon",'lib/iscroll/iscroll-lite',"text!./avalon.pick.html","css!./avalon.pick.css"],function(avalon,IScroll,tpl){
 	function getFixHeight(h,scaleNum){
 		return h - h % scaleNum;
 	}
@@ -76,12 +62,6 @@ define(["avalon",'lib/iscroll/iscroll-lite',"css!./avalon.pick.css"],function(av
 	                }
 	                this.scrollTo(0,-target,time);
 	            });
-	            if(vmodel.unit){
-	            	var center = element.querySelector(".pick-center");
-	            	setTimeout(function(){
-	            		center.style.top = vmodel.maskHeightPercent;
-	            	});
-				}
 			};
 			vm.$remove = function(){
 				element.innerHTML = element.textContent = "";

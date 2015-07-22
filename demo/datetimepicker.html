@@ -6,14 +6,25 @@
 	<meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
 	<title>avalon datetimepicker</title>
 	<link rel="stylesheet" type="text/css" href="demo.css">
+	<style type="text/css">
+		input{padding: 2em}
+	</style>
 </head>
 <body ms-controller='demo'>
-	<input type='text' ms-widget="datetimepicker"/>
+	<input type='text' ms-widget="datetimepicker,$,$date1" readonly placeholder="请点击选择时间"/>
+	<input type='text' ms-widget="datetimepicker,$,$date2" readonly placeholder="请点击选择时间"/>
 	<script src='../src/avalon.mobile.js'></script>
 	<script>
 		require(["datetimepicker/avalon.datetimepicker"],function(){
 			avalon.define({
-				$id : 'demo'
+				$id : 'demo',
+				$date1 : {
+
+				},
+				$date2 : {
+					showClearBtn : false,
+					format : "yyyy-MM-dd hh:mm"
+				}
 			});
 			avalon.scan();
 		});

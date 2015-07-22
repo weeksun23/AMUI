@@ -1,3 +1,7 @@
+.dtp{
+	max-width: 500px;margin: 0px auto;
+	border:1px solid #ccc;border-radius: 5px;
+}
 .dtp-pick{
 	display: box;display:-webkit-box;
 	height: 150px;background-color: #fff;
@@ -5,9 +9,21 @@
 .dtp-split{
 	height: 1px;background-color: #ccc;
 }
-.dtp-pick>div,.dtp-btn>div{
+.dtp-pick>div,.dtp-btn>a{
 	box-flex:1;-webkit-box-flex:1;
 }
 .dtp-btn{
 	display: box;display:-webkit-box;
+	border-top: 1px solid #ccc;
+}
+.dtp-btn>a{
+	display: block;background-color: #fff;
+	padding:1em 0;text-align: center;
+	border-right: 1px solid #ccc;color: #333;
+}
+.dtp-btn>a:last-child{
+	border-right: 0;
+}
+.dtp-btn>a.ms-click-active{
+	background-color: #337AB7;color: #fff
 }
