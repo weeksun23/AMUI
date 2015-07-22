@@ -7,6 +7,7 @@
 	<title>avalon slidemenu</title>
 	<link rel="stylesheet" type="text/css" href="demo.css">
 	<style type="text/css">
+		.test{height: 200px;overflow: hidden;}
 	</style>
 </head>
 <body ms-controller='demo'>
@@ -18,18 +19,24 @@
 		<a href='javascript:void(0)' class='btn btn-lightblue btn-block' ms-on-tap='$simpleSlide("right")'>right</a>
 	</div>
 	<div ms-widget='slidemenu,$slidemenu1,$slidemenu1Opts'>
-		<div class='slidemenu-inner' style='padding:3px;'>
+		<div class='slidemenu-inner' style='padding:3px;background-color:#fff'>
 			<h1>slidemenu</h1>
 			<p>wegvg333</p>
 			<p>vg2342r2</p>
 			<p>r4r4r4gg44</p>
 			<p>r34r34</p>
+			<div class='test'></div>
 			<a href='javascript:void(0)' class='btn btn-lightblue btn-block' ms-on-tap='$hide'>hide</a>
 		</div>
 	</div>
 	<script src='../src/avalon.mobile.js'></script>
 	<script>
-		require(["slidemenu/avalon.slidemenu"],function(){
+		var html = [];
+		for(var i=0;i<500;i++){
+			html.push("<div>qwdqwdwd</div>");
+		}
+		document.querySelector(".test").innerHTML = html.join('');
+		require(["slidemenu/avalon.slidemenu.js?ddd"],function(){
 			avalon.define({
 				$id : 'demo',
 				$simpleSlide : function(str){

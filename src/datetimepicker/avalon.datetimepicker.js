@@ -1,7 +1,7 @@
 define([
 	"avalon","text!./avalon.datetimepicker.html",
 	"css!./avalon.datetimepicker.css",
-	"slidemenu/avalon.slidemenu","pick/avalon.pick"],function(avalon,template){
+	"slidemenu/avalon.slidemenu.js?b","pick/avalon.pick"],function(avalon,template){
 	/*
 		占用如下vmodel id
 		$datetimepicker $pickslidemenu [datetimepickerId]
