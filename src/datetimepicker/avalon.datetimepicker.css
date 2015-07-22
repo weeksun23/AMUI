@@ -22,7 +22,7 @@
 	height: 150px;
 }
 .dtp-split{
-	height: 1px;background-color: #ccc;
+	height: 1px;background-color: #ccc;margin: 1px 0;
 }
 .dtp-pick>div,.dtp-btn>a{
 	box-flex:1;-webkit-box-flex:1;
