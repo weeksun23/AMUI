@@ -122,6 +122,52 @@ define([
 				}
 			});
 		});
+<<<<<<< HEAD
+=======
+		//datetimepickerId
+		avalon.bind(element,"tap",function(){
+			if(!isInit){
+				var div = document.createElement("div");
+				div.setAttribute("ms-widget","slidemenu,$pickslidemenu,$slidemenuOpts");
+				div.innerHTML = template;
+				var m = avalon.define({
+					$id : +new Date,
+					$curVmodel : null,
+					$slidemenuOpts : {
+						position : 'bottom',
+						onShowEnd : function(){
+							var dtp = this.querySelector("div.dtp");
+							if(dtp.getAttribute("ms-skip") !== null){
+								dtp.removeAttribute("ms-skip");
+								var mm = avalon.define(avalon.mix({
+									$id : "$datetimepicker",
+									$curVmodel : null
+								},pickOptions));
+								avalon.scan(dtp,mm);
+							}
+							var $datetimepicker = avalon.vmodels.$datetimepicker;
+							var $curVmodel = avalon.vmodels.$pickslidemenu.$curVmodel;
+							$datetimepicker.$curVmodel = $curVmodel;
+							avalon.each(["showClearBtn","showTodayBtn","format"],function(i,v){
+								$datetimepicker[v] = $curVmodel[v];
+							});
+							var val = getValue($curVmodel.widgeElement);
+							var date = new Date(val.replace(/\-/g,"/"));
+							if(date.toString() === "Invalid Date"){
+								date = new Date();
+							}
+							setPickerTime(date);
+						}
+					}
+				});
+				document.body.appendChild(div);
+				avalon.scan(div,m);
+				isInit = true;
+			}
+			avalon.vmodels.$pickslidemenu.$curVmodel = vmodel;
+			avalon.vmodels.$pickslidemenu.show();
+		});
+>>>>>>> parent of 3ff39f3... update
 		return vmodel;
 	};
 	widget.defaults = {
