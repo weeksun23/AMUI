@@ -13,9 +13,10 @@
 <body ms-controller='demo'>
 	<span class='span' ms-widget="datetimepicker,$,$date1"></span>
 	<span class='span' ms-widget="datetimepicker,$,$date2"></span>
+	<span class='span' ms-widget="datetimepicker,$,$date3"></span>
 	<script src='../src/avalon.mobile.js'></script>
 	<script>
-		require(["datetimepicker/avalon.datetimepicker.js?r"],function(){
+		require(["datetimepicker/avalon.datetimepicker.js?vv"],function(){
 			avalon.define({
 				$id : 'demo',
 				$date1 : {
@@ -24,6 +25,9 @@
 				$date2 : {
 					showClearBtn : false,
 					format : "yyyy-MM-dd hh:mm"
+				},
+				$date3 : {
+					format : "yyyy-MM-dd"
 				}
 			});
 			avalon.scan();

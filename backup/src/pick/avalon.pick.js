@@ -1,7 +1,7 @@
 /*
 	移动端选择插件
 */
-define(["avalon",'lib/iscroll/iscroll-lite',"text!./avalon.pick.html","css!./avalon.pick.css?ddd"],function(avalon,IScroll,tpl){
+define(["avalon",'lib/iscroll/iscroll-lite',"text!./avalon.pick.html","css!./avalon.pick.css"],function(avalon,IScroll,tpl){
 	function getFixHeight(h,scaleNum){
 		return h - h % scaleNum;
 	}

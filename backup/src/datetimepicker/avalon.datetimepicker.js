@@ -1,12 +1,13 @@
 define([
-	"avalon","text!./avalon.datetimepicker.html?ff",
-	"css!./avalon.datetimepicker.css?eee",
-	"pick/avalon.pick.js?ddd"],function(avalon,template){
+	"avalon","text!./avalon.datetimepicker.html",
+	"css!./avalon.datetimepicker.css",
+	"slidemenu/avalon.slidemenu.js?b","pick/avalon.pick"],function(avalon,template){
 	/*
 		占用如下vmodel id
-		$datetimepicker [datetimepickerId]
+		$datetimepicker $pickslidemenu [datetimepickerId]
 		$pickyear $pickmonth $pickday $pickhour $pickminute $picksecond
 	*/
+	var isInit;
 	function getScope(min,max){
 		var re = [];
 		for(var i=min;i<=max;i++){
@@ -58,68 +59,53 @@ define([
 		});
 		return format;
 	}
-	function toggleDtp(isShow){
-		if(isShow){
-			mask.style.display = 'block';
-			dtp.style.display = 'block';
-		}else{
-			mask.style.display = 'none';
-			dtp.style.display = 'none';
-		}
-	}
-	var mask;
-	var dtp;
 	var widget = avalon.ui.datetimepicker = function(element, data, vmodels){
 		var options = data.datetimepickerOptions;
-		function afterShow(){
-			var $datetimepicker = avalon.vmodels.$datetimepicker;
-			$datetimepicker.$curVmodel = vmodel;
-			avalon.each(["showClearBtn","showTodayBtn","format"],function(i,v){
-				$datetimepicker[v] = vmodel[v];
-			});
-			var val = vmodel.value;
-			var date = new Date(val.replace(/\-/g,"/"));
-			if(date.toString() === "Invalid Date"){
-				date = new Date();
-			}
-			setPickerTime(date);
-		}
 		var vmodel = avalon.define(data.datetimepickerId,function(vm){
 			avalon.mix(vm,options,{
 				$init : function(){
 					element.innerHTML = "{{value === '' ? emptyMes : value}}<input type='hidden' ms-duplex='value'>";
 					avalon.bind(element,"tap",function(){
-						if(!mask){
-							mask = document.createElement("div");
-							mask.className = "dtp-mask";
-							dtp = document.createElement("div");
-							dtp.className = "dtp";
-							dtp.setAttribute("ms-skip","");
-							dtp.innerHTML = template;
-							document.body.appendChild(dtp);
-							document.body.appendChild(mask);
-							avalon.bind(mask,"tap",function(){
-								toggleDtp(false);
+						if(!isInit){
+							var div = document.createElement("div");
+							div.setAttribute("ms-widget","slidemenu,$pickslidemenu,$slidemenuOpts");
+							div.innerHTML = template;
+							var m = avalon.define({
+								$id : +new Date,
+								$curVmodel : null,
+								$slidemenuOpts : {
+									position : 'bottom',
+									onShowEnd : function(){
+										var dtp = this.querySelector("div.dtp");
+										if(dtp.getAttribute("ms-skip") !== null){
+											dtp.removeAttribute("ms-skip");
+											var mm = avalon.define(avalon.mix({
+												$id : "$datetimepicker",
+												$curVmodel : null
+											},pickOptions));
+											avalon.scan(dtp,mm);
+										}
+										var $datetimepicker = avalon.vmodels.$datetimepicker;
+										var $curVmodel = avalon.vmodels.$pickslidemenu.$curVmodel;
+										$datetimepicker.$curVmodel = $curVmodel;
+										avalon.each(["showClearBtn","showTodayBtn","format"],function(i,v){
+											$datetimepicker[v] = $curVmodel[v];
+										});
+										var val = $curVmodel.value;
+										var date = new Date(val.replace(/\-/g,"/"));
+										if(date.toString() === "Invalid Date"){
+											date = new Date();
+										}
+										setPickerTime(date);
+									}
+								}
 							});
+							document.body.appendChild(div);
+							avalon.scan(div,m);
+							isInit = true;
 						}
-						toggleDtp(true);
-						if(dtp.getAttribute("ms-skip") !== null){
-							dtp.removeAttribute("ms-skip");
-							var mm = avalon.define(avalon.mix({
-								$id : "$datetimepicker",
-								$curVmodel : null
-							},pickOptions));
-							setTimeout(function(){
-								avalon.scan(dtp,mm);
-								afterShow();
-								var mes = dtp.querySelector(".dtp-loading");
-								mes.parentNode.removeChild(mes);
-							},100);
-						}else{
-							setTimeout(function(){
-								afterShow();
-							},100);
-						}
+						avalon.vmodels.$pickslidemenu.$curVmodel = vmodel;
+						avalon.vmodels.$pickslidemenu.show();
 					});
 					avalon.scan(element,vmodel);
 				},
@@ -127,12 +113,12 @@ define([
 				$skipArray : ["widgeElement"],
 				clear : function(){
 					vmodel.value = '';
-					toggleDtp(false);
+					avalon.vmodels.$pickslidemenu.hide();
 				},
 				ok : function(){
 					var time = getPickerTime(vmodel);
 					vmodel.value = time;
-					toggleDtp(false);
+					avalon.vmodels.$pickslidemenu.hide();
 				}
 			});
 		});
@@ -172,7 +158,7 @@ define([
 			unit : "秒"
 		},
 		cancel : function(){
-			toggleDtp(false);
+			avalon.vmodels.$pickslidemenu.hide();
 		},
 		clear : function(){
 			avalon.vmodels.$datetimepicker.$curVmodel.clear();
