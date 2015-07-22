@@ -18,17 +18,29 @@
 	position: fixed;top: 0;left: 0;right: 0;bottom: 0;z-index:99;background-color: #000;opacity: 0.2;display: none;
 }
 .dtp-pick{
-	display: box;display:-webkit-box;
+	display:-webkit-box;
+	display:-moz-box;
+	display:-o-box;
+	display:-ms-box;
+	display: box;
 	height: 150px;
 }
 .dtp-split{
 	height: 1px;background-color: #ccc;margin: 1px 0;
 }
 .dtp-pick>div,.dtp-btn>a{
-	box-flex:1;-webkit-box-flex:1;
+	box-flex:1;
+	-webkit-box-flex:1;
+	-moz-box-flex:1;
+	-o-box-flex:1;
+	-ms-box-flex:1;
 }
 .dtp-btn{
-	display: box;display:-webkit-box;
+	display:-webkit-box;
+	display:-moz-box;
+	display:-o-box;
+	display:-ms-box;
+	display: box;
 	border-top: 1px solid #ccc;
 }
 .dtp-btn>a{

@@ -5,13 +5,19 @@
 .pick-list-item.vbh{visibility: hidden;}
 .pick-top{
 	top: 0;
-	background: -webkit-gradient(linear,bottom, rgba(255,255,255,0.5), rgba(255,255,255,1));
 	background: -webkit-linear-gradient(bottom, rgba(255,255,255,0.5), rgba(255,255,255,1));
+	background: -moz-linear-gradient(bottom, rgba(255,255,255,0.5), rgba(255,255,255,1));
+	background: -o-linear-gradient(bottom, rgba(255,255,255,0.5), rgba(255,255,255,1));
+	background: -ms-linear-gradient(bottom, rgba(255,255,255,0.5), rgba(255,255,255,1));
+	background: linear-gradient(bottom, rgba(255,255,255,0.5), rgba(255,255,255,1));
 }
 .pick-bottom{
 	bottom: 0;
-	background: -webkit-gradient(linear,bottom, rgba(255,255,255,1), rgba(255,255,255,0.5));
 	background: -webkit-linear-gradient(bottom, rgba(255,255,255,1), rgba(255,255,255,0.5));
+	background: -moz-linear-gradient(bottom, rgba(255,255,255,1), rgba(255,255,255,0.5));
+	background: -o-linear-gradient(bottom, rgba(255,255,255,1), rgba(255,255,255,0.5));
+	background: -ms-linear-gradient(bottom, rgba(255,255,255,1), rgba(255,255,255,0.5));
+	background: linear-gradient(bottom, rgba(255,255,255,1), rgba(255,255,255,0.5));
 }
 .pick-center,.pick-top,.pick-bottom{position: absolute;left: 0;right: 0;z-index: 10;}
 .pick-center{text-align: center;}
