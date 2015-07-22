@@ -1,0 +1,19 @@
+<div class='dtp' ms-skip>
+	<div class='dtp-pick'>
+		<div ms-if='format.indexOf("yyyy") !== -1' ms-widget="pick,$pickyear,$pickyearOpts"></div>
+		<div ms-if='format.indexOf("MM") !== -1' ms-widget="pick,$pickmonth,$pickmonthOpts"></div>
+		<div ms-if='format.indexOf("dd") !== -1' ms-widget="pick,$pickday,$pickdayOpts"></div>
+	</div>
+	<div class='dtp-split'></div>
+	<div class='dtp-pick'>
+		<div ms-if='format.indexOf("hh") !== -1' ms-widget="pick,$pickhour,$pickhourOpts"></div>
+		<div ms-if='format.indexOf("mm") !== -1' ms-widget="pick,$pickminute,$pickminuteOpts"></div>
+		<div ms-if='format.indexOf("ss") !== -1' ms-widget="pick,$picksecond,$picksecondOpts"></div>
+	</div>
+	<div class='dtp-btn'>
+		<a href='javascript:void(0)' ms-on-tap='cancel'>取消</a>
+		<a href='javascript:void(0)' ms-visible='showClearBtn' ms-on-tap='clear'>清空</a>
+		<a href='javascript:void(0)' ms-visible='showTodayBtn' ms-on-tap='today'>今天</a>
+		<a href='javascript:void(0)' ms-on-tap='ok'>确定</a>
+	</div>
+</div>

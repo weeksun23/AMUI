@@ -33,8 +33,9 @@
 			avalon.define({
 				$id : 'demo',
 				$simpleSlide : function(str){
-					avalon.vmodels.$slidemenu1.position = str;
-					avalon.vmodels.$slidemenu1.show();
+					var slidemenu1 = avalon.vmodels.$slidemenu1;
+					slidemenu1.position = str;
+					slidemenu1.show();
 				},
 				$hide : function(){
 					avalon.vmodels.$slidemenu1.hide();
