@@ -1,6 +1,6 @@
 .dtp{
 	max-width: 500px;margin: 0px auto;background-color: #fff;
-	border:1px solid #ccc;border-radius: 5px;
+	border:1px solid #ccc;
 }
 .dtp-pick{
 	display: box;display:-webkit-box;
